@@ -6,7 +6,7 @@
 
 > [!NOTE]
 > This repository is in bootstrap stage.
-> Internal package names, startup scripts, and parts of the documentation still reflect inherited `tabbyAPI` structure while the fork is being normalized.
+> Parts of the runtime layout and many operational docs still reflect inherited `tabbyAPI` structure while the fork is being normalized.
 
 ## What This Fork Is
 

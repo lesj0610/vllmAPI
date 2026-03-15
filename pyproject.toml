@@ -11,9 +11,9 @@ build-backend = "setuptools.build_meta"
 py-modules = []
 
 [project]
-name = "tabbyAPI"
+name = "vllmAPI"
 version = "0.0.1"
-description = "An OAI compatible exllamav2 API that's both lightweight and fast"
+description = "A general-purpose OpenAI-compatible LLM server with ExLlama backends"
 requires-python = ">=3.10"
 dependencies = [
     "fastapi-slim >= 0.115",
@@ -45,7 +45,7 @@ dependencies = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/theroyallab/tabbyAPI"
+"Homepage" = "https://github.com/lesj0610/vllmAPI"
 
 [project.optional-dependencies]
 extras = [

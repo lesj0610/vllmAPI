@@ -34,7 +34,7 @@ def init_argparser(
     """
 
     parser = unwrap(
-        existing_parser, argparse.ArgumentParser(description="TabbyAPI server")
+        existing_parser, argparse.ArgumentParser(description="vllmAPI server")
     )
 
     add_subcommands(parser)

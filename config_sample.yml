@@ -155,7 +155,7 @@ model:
 
   # Reasoning parser key for splitting hidden reasoning and final content.
   # Compatible keys include: basic, exaone4, deepseek_r1, deepseek_v3.
-  # If omitted, TabbyAPI defaults to `basic`.
+  # If omitted, vllmAPI defaults to `basic`.
   reasoning_parser:
 
   # Enable automatic tool selection (default: False).

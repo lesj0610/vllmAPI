@@ -74,21 +74,21 @@ async def service_info():
         content={
             "version": 0.1,
             "software": {
-                "name": "TabbyAPI",
-                "repository": "https://github.com/theroyallab/tabbyAPI",
-                "homepage": "https://github.com/theroyallab/tabbyAPI",
+                "name": "vllmAPI",
+                "repository": "https://github.com/lesj0610/vllmAPI",
+                "homepage": "https://github.com/lesj0610/vllmAPI",
             },
             "api": {
                 "openai": {
                     "name": "OpenAI API",
                     "relative_url": "/v1",
-                    "documentation": "https://theroyallab.github.io/tabbyAPI",
+                    "documentation": "https://github.com/lesj0610/vllmAPI/tree/main/docs",
                     "version": 1,
                 },
                 "koboldai": {
                     "name": "KoboldAI API",
                     "relative_url": "/api",
-                    "documentation": "https://theroyallab.github.io/tabbyAPI",
+                    "documentation": "https://github.com/lesj0610/vllmAPI/tree/main/docs",
                     "version": 1,
                 },
             },

@@ -95,7 +95,7 @@ def get_install_features(lib_name: str = None):
         # Exit if using AMD and Windows
         if platform.system() == "Windows":
             print(
-                "ERROR: TabbyAPI does not support AMD and Windows. "
+                "ERROR: vllmAPI does not support AMD and Windows. "
                 "Please use Linux and ROCm 6.4. Exiting."
             )
             sys.exit(0)
@@ -187,7 +187,7 @@ if __name__ == "__main__":
         has_full_parser = True
     except ModuleNotFoundError:
         parser = argparse.ArgumentParser(
-            description="Abridged TabbyAPI start script parser.",
+            description="Abridged vllmAPI start script parser.",
             epilog=(
                 "Some dependencies were not found to display the full argparser. "
                 "Run the script once to install/update them."
@@ -215,7 +215,7 @@ if __name__ == "__main__":
             first_run = False
     else:
         print(
-            "It looks like you're running TabbyAPI for the first time. "
+            "It looks like you're running vllmAPI for the first time. "
             "Getting things ready..."
         )
 
@@ -262,7 +262,7 @@ if __name__ == "__main__":
 
         if args.update_deps:
             print(
-                f"Dependencies updated. Please run TabbyAPI with `start.{script_ext}`. "
+                f"Dependencies updated. Please run vllmAPI with `start.{script_ext}`. "
                 "Exiting."
             )
             sys.exit(0)
@@ -280,7 +280,7 @@ if __name__ == "__main__":
                 "Successfully wrote your start script options to "
                 "`start_options.json`. \n"
                 "If something goes wrong, editing or deleting the file "
-                "will reinstall TabbyAPI as a first-time user."
+                "will reinstall vllmAPI as a first-time user."
             )
 
     # Expand the parser if it's not fully created
@@ -295,7 +295,7 @@ if __name__ == "__main__":
         from main import entrypoint
 
         # Create a config if it doesn't exist
-        # This is not necessary to run TabbyAPI, but is new user proof
+        # This is not necessary to run vllmAPI, but is new user proof
         config_path = (
             pathlib.Path(args.config) if args.config else pathlib.Path("config.yml")
         )
@@ -308,7 +308,7 @@ if __name__ == "__main__":
                 f"Created one at {str(config_path.resolve())}"
             )
 
-        print("Starting TabbyAPI...")
+        print("Starting vllmAPI...")
         entrypoint(args, parser)
     except (ModuleNotFoundError, ImportError):
         traceback.print_exc()
