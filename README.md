@@ -1,5 +1,10 @@
 # TabbyAPI
 
+> [!NOTE]
+>
+> This repository is currently being used as the clean fork base for `vllmAPI`.
+> See [docs/00-vllmapi-charter.md](docs/00-vllmapi-charter.md) for the fork direction and development rules.
+
 <p align="left">
     <img src="https://img.shields.io/badge/Python-3.10%20|%203.11%20|%203.12-blue" alt="Python 3.10, 3.11, and 3.12">
     <a href="/LICENSE">
