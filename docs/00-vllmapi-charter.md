@@ -1,5 +1,9 @@
 # vllmAPI Charter
 
+> [!IMPORTANT]
+> `vllmAPI policy`.
+> This document defines fork direction and overrides inherited `tabbyAPI` documentation where they conflict.
+
 ## Goal
 
 `vllmAPI` is a clean fork workspace derived from `tabbyAPI` `main`, intended to grow into a general-purpose LLM chat server with:

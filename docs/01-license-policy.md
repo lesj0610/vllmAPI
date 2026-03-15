@@ -1,5 +1,9 @@
 # vllmAPI License Policy
 
+> [!IMPORTANT]
+> `vllmAPI policy`.
+> This document defines the fork's working license rules and notice handling.
+
 This document is a project policy for keeping the fork legally clean.
 It is not legal advice.
 

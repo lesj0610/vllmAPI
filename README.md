@@ -1,132 +1,132 @@
-# TabbyAPI
-
-> [!NOTE]
->
-> This repository is currently being used as the clean fork base for `vllmAPI`.
-> See [docs/00-vllmapi-charter.md](docs/00-vllmapi-charter.md) for the fork direction and development rules.
-
-<p align="left">
-    <img src="https://img.shields.io/badge/Python-3.10%20|%203.11%20|%203.12-blue" alt="Python 3.10, 3.11, and 3.12">
-    <a href="/LICENSE">
-        <img src="https://img.shields.io/badge/License-AGPLv3-blue.svg" alt="License: AGPL v3"/>
-    </a>
-    <a href="https://discord.gg/sYQxnuD7Fj">
-        <img src="https://img.shields.io/discord/545740643247456267.svg?logo=discord&color=blue" alt="Discord Server"/>
-    </a>
-</p>
-
-<p align="left">
-    <a href="https://theroyallab.github.io/tabbyAPI">
-        <img src="https://img.shields.io/badge/Documentation-API-orange" alt="Developer facing API documentation">
-    </a>
-</p>
-
-<p align="left">
-    <a href="https://ko-fi.com/I2I3BDTSW">
-        <img src="https://img.shields.io/badge/Support_on_Ko--fi-FF5E5B?logo=ko-fi&style=for-the-badge&logoColor=white" alt="Support on Ko-Fi">
-    </a>
-</p>
+# vllmAPI
 
 > [!IMPORTANT]
->
->  In addition to the README, please read the [Wiki](https://github.com/theroyallab/tabbyAPI/wiki/1.-Getting-Started) page for information about getting started!
+> `vllmAPI` is a clean fork of `tabbyAPI`, not a drop-in rename.
+> The repository is being rebuilt as a stricter OpenAI-compatible LLM server with `exllamav3` as a first-class backend and `vLLM` as the primary serving reference.
 
 > [!NOTE]
-> 
->  Need help? Join the [Discord Server](https://discord.gg/sYQxnuD7Fj) and get the `Tabby` role. Please be nice when asking questions.
+> This repository is in bootstrap stage.
+> Internal package names, startup scripts, and parts of the documentation still reflect inherited `tabbyAPI` structure while the fork is being normalized.
 
-> [!NOTE]
-> 
-> Want to run GGUF models? Take a look at [YALS](https://github.com/theroyallab/YALS), TabbyAPI's sister project.
+## What This Fork Is
 
-A FastAPI based application that allows for generating text using an LLM (large language model) using the [Exllamav2](https://github.com/turboderp-org/exllamav2) and [Exllamav3](https://github.com/turboderp-org/exllamav3) backends.
+`vllmAPI` exists because the inherited `tabbyAPI` baseline is not sufficient for the level of protocol correctness, client compatibility, parser behavior, and template semantics this project needs.
 
-TabbyAPI is also the official API backend server for ExllamaV2 and V3.
+The fork direction is:
 
-## Disclaimer
+- keep `exllamav3` integration strong
+- follow `vLLM` where its serving contracts are better defined
+- replace fragile compatibility patches with explicit protocol and parser layers
+- keep the implementation smaller than `vLLM`, but not looser than `vLLM` in API semantics
 
-This project is marked as rolling release. There may be bugs and changes down the line. Please be aware that you might need to reinstall dependencies if needed.
+This is not an attempt to turn the project into `vLLM`.
+It is an attempt to build a more rigorous server on top of the existing `tabbyAPI` ancestry.
 
-TabbyAPI is a hobby project made for a small amount of users. It is not meant to run on production servers. For that, please look at other solutions that support those workloads.
+## Current Status
 
-## Getting Started
+Current state:
 
-> [!IMPORTANT]
-> 
-> Looking for more information? Check out the Wiki.
+- repository baseline is forked from `tabbyAPI` `main`
+- legal baseline remains `AGPL-3.0-only`
+- upstreams are tracked separately
+- documentation is being rewritten to clearly distinguish inherited content from fork-specific policy
 
-For a step-by-step guide, choose the format that works best for you:
+What is stable right now:
 
-📖 Read the [Wiki](https://github.com/theroyallab/tabbyAPI/wiki/01.-Getting-Started) – Covers installation, configuration, API usage, and more.
+- clean fork repository setup
+- upstream remote separation
+- fork charter
+- license policy and notice tracking
 
-🎥 Watch the [Video Guide](https://www.youtube.com/watch?v=03jYz0ijbUU) – A hands-on walkthrough to get you up and running quickly.
+What is not yet complete:
 
-## Features
+- public package rename throughout the codebase
+- revised OpenAI-compatible serving stack
+- `vLLM`-grade chat streaming and reasoning semantics
+- rebuilt docs for all endpoints and integrations
 
-- OpenAI compatible API
-- Loading/unloading models
-- HuggingFace model downloading
-- Embedding model support
-- JSON schema + Regex + EBNF support
-- AI Horde support
-- Speculative decoding via draft models
-- Multi-lora with independent scaling (ex. a weight of 0.9)
-- Inbuilt proxy to override client request parameters/samplers
-- Flexible Jinja2 template engine for chat completions that conforms to HuggingFace
-- Concurrent inference with asyncio
-- Utilizes modern python paradigms
-- Continuous batching engine using paged attention
-- Fast classifier-free guidance
-- OAI style tool/function calling
+## Repository Layout
 
-And much more. If something is missing here, PR it in!
+- [docs/00-vllmapi-charter.md](docs/00-vllmapi-charter.md)
+  - product direction, scope, architecture, and development rules
+- [docs/01-license-policy.md](docs/01-license-policy.md)
+  - fork license policy and porting rules
+- [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)
+  - current third-party attribution and shipped notices
+- `backends/`
+  - inherited backend integrations, including `exllamav3`
+- `endpoints/`
+  - inherited API surface that will be tightened incrementally
+- `tests/`
+  - inherited test base that will be expanded with stricter protocol tests
 
-## Supported Model Types
+## Upstream Relationship
 
-TabbyAPI uses Exllama as a powerful and fast backend for model inference, loading, etc. Therefore, the following types of models are supported:
+This repository intentionally tracks three different sources of truth:
 
-- Exl2 (Highly recommended)
+1. `tabbyAPI`
+   - fork ancestry
+   - reusable backend glue and existing utilities
+2. `vLLM`
+   - primary reference for serving contracts
+   - primary reference for OpenAI-compatible semantics
+3. `exllamav3`
+   - inference runtime target
+   - backend capability boundary
 
-- Exl3 (Highly recommended)
+Project rule:
 
-- GPTQ
+- `vLLM` is the semantic reference
+- `exllamav3` is the runtime reference
+- inherited `tabbyAPI` code is reused only when it survives testing and design review
 
-- FP16 (using Exllamav2's loader)
+## Documentation Status
 
-In addition, TabbyAPI supports parallel batching using paged attention for Nvidia Ampere GPUs and higher.
+Most files under `docs/` are inherited from `tabbyAPI`.
+They are being retained temporarily so the fork does not lose operational knowledge during the bootstrap phase.
 
-## Contributing
+Interpretation rule for inherited docs:
 
-Use the template when creating issues or pull requests, otherwise the developers may not look at your post.
+- if a page explicitly says `Inherited from tabbyAPI`, treat it as carried-forward reference material
+- if a page explicitly says `vllmAPI policy`, treat it as fork-specific source of truth
 
-If you have issues with the project:
+Until the rewrite is complete, fork-specific source of truth is limited to:
 
-- Describe the issue in detail
+- [docs/00-vllmapi-charter.md](docs/00-vllmapi-charter.md)
+- [docs/01-license-policy.md](docs/01-license-policy.md)
+- [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)
 
-- If you have a feature request, please indicate it as such.
+## License
 
-If you have a Pull Request
+This repository remains `AGPL-3.0-only` because it is derived from `tabbyAPI`.
 
-- Describe the pull request in detail, what, and why you are changing something
+Additional rules:
 
-## Acknowldgements
+- `vLLM`-derived code must retain Apache-2.0 notice coverage
+- `exllamav3`-derived code must retain MIT notice coverage
+- hosted deployments must respect AGPL network source-offer obligations
 
-TabbyAPI would not exist without the work of other contributors and FOSS projects:
+See:
 
-- [ExllamaV2](https://github.com/turboderp-org/exllamav2)
-- [ExllamaV3](https://github.com/turboderp-org/exllamav3)
-- [Aphrodite Engine](https://github.com/PygmalionAI/Aphrodite-engine)
-- [infinity-emb](https://github.com/michaelfeil/infinity)
+- [LICENSE](LICENSE)
+- [docs/01-license-policy.md](docs/01-license-policy.md)
+- [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)
+
+## Roadmap
+
+The first implementation slices are:
+
+1. lock down `/v1/chat/completions` streaming semantics
+2. rebuild chat template semantics using `vLLM` as reference
+3. rebuild reasoning parser behavior without model-name hacks
+4. reintroduce `/v1/responses` only after the chat contract is correct
+5. add client compatibility tests for raw `curl`, OpenAI SDK, Open WebUI, and LobeChat
+
+## Acknowledgements
+
+This fork would not exist without the work of the upstream projects it builds on:
+
+- [tabbyAPI](https://github.com/theroyallab/tabbyAPI)
+- [vLLM](https://github.com/vllm-project/vllm)
+- [exllamav3](https://github.com/turboderp-org/exllamav3)
 - [FastAPI](https://github.com/fastapi/fastapi)
-- [Text Generation WebUI](https://github.com/oobabooga/text-generation-webui)
-- [SillyTavern](https://github.com/SillyTavern/SillyTavern)
-
-## Developers and Permissions
-
-Creators/Developers:
-
-- [kingbri](https://github.com/bdashore3)
-
-- [Splice86](https://github.com/Splice86)
-
-- [Turboderp](https://github.com/turboderp)
