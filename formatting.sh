@@ -41,7 +41,7 @@ format_and_lint() {
 
 # Call format command
 format_and_lint
-echo 'vllmAPI ruff lint and format: Done'
+echo 'ZenithForge ruff lint and format: Done'
 
 if ! git diff --quiet &>/dev/null; then
     echo 'Reformatted files. Please review and stage the changes.'

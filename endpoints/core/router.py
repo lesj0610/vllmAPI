@@ -74,21 +74,21 @@ async def service_info():
         content={
             "version": 0.1,
             "software": {
-                "name": "vllmAPI",
-                "repository": "https://github.com/lesj0610/vllmAPI",
-                "homepage": "https://github.com/lesj0610/vllmAPI",
+                "name": "ZenithForge",
+                "repository": "https://github.com/lesj0610/ZenithForge",
+                "homepage": "https://github.com/lesj0610/ZenithForge",
             },
             "api": {
                 "openai": {
                     "name": "OpenAI API",
                     "relative_url": "/v1",
-                    "documentation": "https://github.com/lesj0610/vllmAPI/tree/main/docs",
+                    "documentation": "https://github.com/lesj0610/ZenithForge/tree/main/docs",
                     "version": 1,
                 },
                 "koboldai": {
                     "name": "KoboldAI API",
                     "relative_url": "/api",
-                    "documentation": "https://github.com/lesj0610/vllmAPI/tree/main/docs",
+                    "documentation": "https://github.com/lesj0610/ZenithForge/tree/main/docs",
                     "version": 1,
                 },
             },

@@ -1,110 +1,89 @@
-# vllmAPI
+# ZenithForge
 
 > [!IMPORTANT]
-> `vllmAPI` is a clean fork of `tabbyAPI`, not a drop-in rename.
-> The repository is being rebuilt as a stricter OpenAI-compatible LLM server with `exllamav3` as a first-class backend and `vLLM` as the primary serving reference.
+> `ZenithForge` is a separately branded fork derived from `tabbyAPI`.
+> It is being rebuilt as an `exllamav3`-first, OpenAI-compatible serving stack with `vLLM` used as the primary architectural and protocol reference.
 
 > [!NOTE]
-> This repository is in bootstrap stage.
-> Parts of the runtime layout and many operational docs still reflect inherited `tabbyAPI` structure while the fork is being normalized.
+> This repository is still in bootstrap stage.
+> A large portion of the operational docs are inherited from `tabbyAPI` and are retained only as temporary reference.
 
-## What This Fork Is
+> [!WARNING]
+> `ZenithForge` is not affiliated with `vLLM`, `TabbyML`, or the upstream `tabbyAPI` project.
+> Upstream names are used only for attribution, compatibility discussion, and architectural reference.
 
-`vllmAPI` exists because the inherited `tabbyAPI` baseline is not sufficient for the level of protocol correctness, client compatibility, parser behavior, and template semantics this project needs.
+## What ZenithForge Is
 
-The fork direction is:
+`ZenithForge` exists because the inherited `tabbyAPI` baseline is not sufficient for the level of protocol correctness, parser behavior, chat templating, streaming stability, and client compatibility this project is targeting.
 
-- keep `exllamav3` integration strong
-- follow `vLLM` where its serving contracts are better defined
-- replace fragile compatibility patches with explicit protocol and parser layers
-- keep the implementation smaller than `vLLM`, but not looser than `vLLM` in API semantics
+The product direction is:
 
-This is not an attempt to turn the project into `vLLM`.
-It is an attempt to build a more rigorous server on top of the existing `tabbyAPI` ancestry.
+- keep `exllamav3` as the primary text-generation runtime
+- use `vLLM` as the semantic reference for serving behavior
+- retain only the `tabbyAPI` pieces that survive design review and regression tests
+- replace ad-hoc compatibility logic with explicit render, parser, streaming, and runtime layers
+
+This is not a `vLLM` clone and not a branding-only fork.
+It is a new product boundary built on top of inherited `tabbyAPI` ancestry.
 
 ## Current Status
 
-Current state:
-
-- repository baseline is forked from `tabbyAPI` `main`
-- legal baseline remains `AGPL-3.0-only`
-- upstreams are tracked separately
-- documentation is being rewritten to clearly distinguish inherited content from fork-specific policy
-
-What is stable right now:
+Stable today:
 
 - clean fork repository setup
 - upstream remote separation
-- fork charter
-- license policy and notice tracking
+- AGPL baseline and third-party notice tracking
+- fork charter and rearchitecture planning
+- initial `ZenithForge` branding transition
 
-What is not yet complete:
+Not complete yet:
 
-- public package rename throughout the codebase
-- revised OpenAI-compatible serving stack
-- `vLLM`-grade chat streaming and reasoning semantics
-- rebuilt docs for all endpoints and integrations
-
-## Repository Layout
-
-- [docs/00-vllmapi-charter.md](docs/00-vllmapi-charter.md)
-  - product direction, scope, architecture, and development rules
-- [docs/01-license-policy.md](docs/01-license-policy.md)
-  - fork license policy and porting rules
-- [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)
-  - current third-party attribution and shipped notices
-- `backends/`
-  - inherited backend integrations, including `exllamav3`
-- `endpoints/`
-  - inherited API surface that will be tightened incrementally
-- `tests/`
-  - inherited test base that will be expanded with stricter protocol tests
+- end-to-end serving rearchitecture
+- CLI-first bootstrap replacing YAML-first startup
+- `vLLM`-grade streaming and parser contracts
+- full documentation rewrite
+- package/layout normalization
 
 ## Upstream Relationship
 
-This repository intentionally tracks three different sources of truth:
+This repository intentionally keeps three separate reference layers:
 
 1. `tabbyAPI`
-   - fork ancestry
-   - reusable backend glue and existing utilities
+   - legal and code ancestry
+   - migration source for reusable backend glue and utilities
 2. `vLLM`
-   - primary reference for serving contracts
-   - primary reference for OpenAI-compatible semantics
+   - reference for serving contracts, parser behavior, render boundaries, and streaming semantics
 3. `exllamav3`
-   - inference runtime target
+   - primary inference runtime target
    - backend capability boundary
 
 Project rule:
 
-- `vLLM` is the semantic reference
+- `vLLM` is the serving reference
 - `exllamav3` is the runtime reference
-- inherited `tabbyAPI` code is reused only when it survives testing and design review
+- inherited `tabbyAPI` code is reused only when it survives testing and architecture review
 
 ## Documentation Status
 
-Most files under `docs/` are inherited from `tabbyAPI`.
-They are being retained temporarily so the fork does not lose operational knowledge during the bootstrap phase.
+Most files under `docs/` are still inherited from `tabbyAPI`.
+They should be read as temporary reference, not final product policy, unless the page explicitly says `ZenithForge policy`.
 
-Interpretation rule for inherited docs:
+Current source-of-truth documents are:
 
-- if a page explicitly says `Inherited from tabbyAPI`, treat it as carried-forward reference material
-- if a page explicitly says `vllmAPI policy`, treat it as fork-specific source of truth
-
-Until the rewrite is complete, fork-specific source of truth is limited to:
-
-- [docs/00-vllmapi-charter.md](docs/00-vllmapi-charter.md)
+- [docs/00-zenithforge-charter.md](docs/00-zenithforge-charter.md)
 - [docs/01-license-policy.md](docs/01-license-policy.md)
+- [docs/11.-ZenithForge-vLLM-Reference-Rearchitecture-Plan.md](docs/11.-ZenithForge-vLLM-Reference-Rearchitecture-Plan.md)
 - [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)
 
 ## License
 
-This repository remains `AGPL-3.0-only` because it is derived from `tabbyAPI`.
+`ZenithForge` remains `AGPL-3.0-only` because it is derived from `tabbyAPI`.
 
 Additional rules:
 
-- `vLLM`-derived code must retain Apache-2.0 notice coverage
-- `exllamav3`-derived code must retain MIT notice coverage
-- hosted deployments must respect AGPL network source-offer obligations
+- code adapted from `vLLM` must retain Apache-2.0 attribution and notice coverage
+- copied `exllamav3` code must retain MIT attribution and notice coverage
+- hosted deployments must satisfy AGPL network source-offer obligations
 
 See:
 
@@ -112,19 +91,19 @@ See:
 - [docs/01-license-policy.md](docs/01-license-policy.md)
 - [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)
 
-## Roadmap
+## Immediate Direction
 
-The first implementation slices are:
+The first implementation slices remain:
 
-1. lock down `/v1/chat/completions` streaming semantics
-2. rebuild chat template semantics using `vLLM` as reference
-3. rebuild reasoning parser behavior without model-name hacks
-4. reintroduce `/v1/responses` only after the chat contract is correct
-5. add client compatibility tests for raw `curl`, OpenAI SDK, Open WebUI, and LobeChat
+1. lock down `/v1/chat/completions` rendering and streaming contracts
+2. rebuild chat templating, reasoning parsing, and tool parsing using `vLLM` as reference
+3. move server startup from YAML-first to CLI-first
+4. reintroduce broader parity such as `/v1/responses`, pooling, audio, and realtime only after the core contract is stable
+5. add client compatibility tests for raw `curl`, OpenAI SDK, Open WebUI, and LobeChat-class clients
 
 ## Acknowledgements
 
-This fork would not exist without the work of the upstream projects it builds on:
+This project builds on the work of upstream projects it references or derives from:
 
 - [tabbyAPI](https://github.com/theroyallab/tabbyAPI)
 - [vLLM](https://github.com/vllm-project/vllm)

@@ -1,5 +1,5 @@
 """
-This method of authorization is pretty insecure, but since vllmAPI is a local
+This method of authorization is pretty insecure, but since ZenithForge is a local
 application, it should be fine.
 """
 

@@ -1,13 +1,13 @@
 version: '3.8'
 services:
-  vllmapi:
+  zenithforge:
     # Uncomment this to build a docker image from source
     #build:
     #  context: ..
     #  dockerfile: ./docker/Dockerfile
 
     # Comment this to build a docker image from source
-    image: ghcr.io/lesj0610/vllmapi:latest
+    image: ghcr.io/lesj0610/zenithforge:latest
     ports:
       - "5000:5000"
     healthcheck:
@@ -16,7 +16,7 @@ services:
       timeout: 10s
       retries: 3
     environment:
-      - NAME=vllmAPI
+      - NAME=ZenithForge
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
       - ./models:/app/models                                # Change me

@@ -18,7 +18,7 @@ from exllamav3.generator.sampler import (
 @dataclass
 class ExllamaV3SamplerBuilder:
     """
-    Custom sampler chain/stack for vllmAPI
+    Custom sampler chain/stack for ZenithForge
     """
 
     stack: List[SS_Base] = field(default_factory=list)

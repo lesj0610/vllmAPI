@@ -632,7 +632,7 @@ class ToolCallProcessor:
         """Auto-detect format and parse.
 
         Tries in order:
-          1. Pure JSON (standard vllmAPI / Llama)
+          1. Pure JSON (standard ZenithForge / Llama)
           2. JSON inside <tool_call> wrappers (Qwen3-Instruct style)
           3. XML with <function=...> tags (Qwen3-Coder style)
         """

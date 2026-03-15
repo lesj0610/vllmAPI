@@ -17,7 +17,7 @@ def setup_app(host: Optional[str] = None, port: Optional[int] = None):
     """Includes the correct routers for startup"""
 
     app = FastAPI(
-        title="vllmAPI",
+        title="ZenithForge",
         summary="A general-purpose OpenAI-compatible LLM server with ExLlama backends",
         description=(
             "This docs page is not meant to send requests! Please use a service "

@@ -1,7 +1,7 @@
-# vllmAPI License Policy
+# ZenithForge License Policy
 
 > [!IMPORTANT]
-> `vllmAPI policy`.
+> `ZenithForge policy`.
 > This document defines the fork's working license rules and notice handling.
 
 This document is a project policy for keeping the fork legally clean.
@@ -9,7 +9,7 @@ It is not legal advice.
 
 ## Project License
 
-`vllmAPI` is currently a fork of `tabbyAPI`, so the repository remains licensed under:
+`ZenithForge` is currently a fork of `tabbyAPI`, so the repository remains licensed under:
 
 - `AGPL-3.0-only`
 
@@ -29,6 +29,7 @@ Current policy:
 2. Code adapted from `vLLM` must keep attribution and Apache notice coverage
 3. Code copied from `exllamav3` must keep attribution and MIT notice coverage
 4. Runtime integration with `exllamav3` alone does not change the repository license
+5. Brand renaming does not remove attribution obligations to upstream projects
 
 ## Practical Rules
 
@@ -47,7 +48,7 @@ Apache-2.0 is compatible with GPLv3-family licensing in the direction needed for
 - preserve the MIT copyright notice
 - ensure `LICENSES/MIT-exllamav3.txt` remains shipped
 
-If `vllmAPI` only talks to `exllamav3` through backend integration boundaries and does not copy code, keep the dependency mention but do not claim copied-file coverage.
+If `ZenithForge` only talks to `exllamav3` through backend integration boundaries and does not copy code, keep the dependency mention but do not claim copied-file coverage.
 
 ### When modifying existing AGPL code
 

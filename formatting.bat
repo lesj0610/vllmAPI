@@ -14,7 +14,7 @@ call :tool_version_check "ruff" %RUFF_VERSION% "0.1.9"
 call ruff format
 call ruff check
 
-echo vllmAPI ruff lint and format: Done
+echo ZenithForge ruff lint and format: Done
 
 ::Check if any files were changed
 git diff --quiet

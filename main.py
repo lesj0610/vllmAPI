@@ -1,4 +1,4 @@
-"""The main vllmAPI module. Contains the FastAPI server and endpoints."""
+"""The main ZenithForge module. Contains the FastAPI server and endpoints."""
 
 # Set this env var for cuda malloc async before torch is initalized
 import os
@@ -144,7 +144,7 @@ def entrypoint(
         )
     elif not dependencies.inference:
         install_message = (
-            f"ERROR: Inference dependencies for vllmAPI are not installed.\n"
+            f"ERROR: Inference dependencies for ZenithForge are not installed.\n"
             "Please update your environment by running an update script "
             "(update_scripts/"
             f"update_deps.{'bat' if platform.system() == 'Windows' else 'sh'})\n\n"
