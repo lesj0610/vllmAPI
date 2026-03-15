@@ -2,6 +2,9 @@
 
 This repository is licensed under AGPL-3.0 (see `LICENSE`).
 
+The fork ancestry remains AGPL-covered because this project is derived from
+`tabbyAPI`.
+
 The following files include code adapted from the vLLM project and are
 licensed under Apache License 2.0:
 
@@ -35,3 +38,14 @@ Source project:
 
 The Apache-2.0 license text is provided at:
 - `LICENSES/Apache-2.0.txt`
+
+The project also integrates with `exllamav3`, which is licensed under MIT.
+At the current bootstrap stage, this repository tracks `exllamav3` as a backend
+integration target and ships the MIT license text for future copied/adapted code
+tracking.
+
+Source project:
+- exllamav3: https://github.com/turboderp-org/exllamav3
+
+The MIT license text is provided at:
+- `LICENSES/MIT-exllamav3.txt`
